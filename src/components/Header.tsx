@@ -70,11 +70,11 @@ export function Header () {
                 <Box mr="4" textAlign="right">
                   <Text>Danilo Cucharro</Text>
                   <Text color="gray.300" fontSize="small">
-                    danilo@gmail.com
+                    danicucharro@outlook.com
                   </Text>
                 </Box>
 
-                <Avatar size="md" name="Danilo Cucharro" src="https://github.com/danilocucharro"/>
+                <Avatar size="md" name="Danilo Cucharro" src="https://github.com/danilocucharro" />
               </Flex>
             </Flex>
         </Flex>
