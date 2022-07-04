@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import { Header } from "../components/Header";
 import { Sidebar } from "../components/Sidebar";
 import { ApexOptions } from 'apexcharts';
+import { useState } from "react";
 
 const Chart = dynamic(()=> import('react-apexcharts'), {
     ssr: false,//desligando o ServerSideRendering
@@ -61,6 +62,12 @@ const series = [
 ]
 
 export default function Dashboard () {
+
+    const [showChart, setShowChart] = useState(false);
+
+    setTimeout(() => {
+    setShowChart(true);
+  }, 1);
     return (
         <Flex direction="column" h="100vh">
             <Header/>
@@ -79,7 +86,7 @@ export default function Dashboard () {
                         <Chart options={options} series={series} type="area" height={160} />
                     </Box>
                     <Box
-                      p="8"
+                      p={["6", "8"]}
                       bg="gray.800"
                       borderRadius={8}
                       pb="4"
