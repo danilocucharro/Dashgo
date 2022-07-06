@@ -6,7 +6,7 @@ import { Input } from '../components/Form/Input'
 
 type SignInFormData = {
   email: string;
-  password: String; 
+  password: string; 
 }
 
 const signInFormSchema = yup.object().shape({
