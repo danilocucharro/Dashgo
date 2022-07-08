@@ -28,7 +28,7 @@ export function makeServer(){//simulando um servidor backend com o miragejs
         },
 
         seeds(server){
-            server.createList('user', 200)//criando 200 usuarios
+            server.createList('user', 10)//criando 200 usuarios
         }, 
 
         routes(){//o mirage identifica automaticamente a chamada de get e de post para a rota /users
