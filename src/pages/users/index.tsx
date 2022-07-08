@@ -9,7 +9,7 @@ import { Pagination } from "../../components/Pagination";
 import { Sidebar } from "../../components/Sidebar";
 
 export default function UserList() {
-    const { data, isLoading, error } = useQuery('users', async () => {
+    const { data, isLoading, error } = useQuery('users', async () => {// os dados serao salvos em cache local nessa chave
         const response = await fetch('http://localhost:3000/api/users')
         const data = await response.json()
 
@@ -22,8 +22,10 @@ export default function UserList() {
             }
         });
 
-        return users
-    })// os dados serao salvos em cache local nessa chave
+        return users;
+    }, {
+        staleTime: 1000 * 5// durante 5 segundos o feching nao precisa-ra ser recarregado se for mudado de foco
+    })
     
     const isWideVersion = useBreakpointValue({
         base: false,
