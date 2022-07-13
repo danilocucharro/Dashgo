@@ -52,6 +52,8 @@ export function makeServer(){//simulando um servidor backend com o miragejs
                     { users }//registros
                 )
             });
+
+            this.get('/users/:id')
             this.post('/users');
 
             this.namespace = '';//voltando o estado da rota de chamada pro mirage em branco para nao dar conflito nas rotas

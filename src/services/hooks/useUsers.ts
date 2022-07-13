@@ -39,6 +39,6 @@ export async function getUsers(page: number): Promise<GetUsersResponse> {// os d
 
 export function useUsers(page: number){
     return useQuery(['users', page], () => getUsers(page), {
-        staleTime: 1000 * 5// durante 5 segundos o feching nao precisa-ra ser recarregado se for mudado de foco
+        staleTime: 1000 * 60 * 5// durante 5 minutos o feching nao precisa-ra ser recarregado se for mudado de foco
     })
 }
