@@ -1,4 +1,4 @@
-import { createServer, Factory, Model, Response } from 'miragejs'
+import { createServer, Factory, Model, Response, ActiveModelSerializer } from 'miragejs'
 import faker from 'faker' //biblioteca de geração de dados falsos
 
 type User = {//tipando o formato do user
@@ -9,6 +9,9 @@ type User = {//tipando o formato do user
 
 export function makeServer(){//simulando um servidor backend com o miragejs
     const server = createServer({
+        serializers: {
+            application: ActiveModelSerializer,
+        },
         models: {//declarando os models necessarios para o dashgo
             user: Model.extend<Partial<User>>({})//Partial: faz com que todos os campos do user nao sejam obrigatorios
         },
@@ -44,7 +47,8 @@ export function makeServer(){//simulando um servidor backend com o miragejs
                 const pageEnd = pageStart + Number(per_page);
 
                 const users = this.serialize(schema.all('user'))
-                .users.slice(pageStart, pageEnd)
+                .users
+                .slice(pageStart, pageEnd)
 
                 return new Response(
                     200, //status code
